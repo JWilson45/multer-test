@@ -17,7 +17,7 @@ var storage = multer.diskStorage({
 const upload = multer({storage: storage}); // set upload to storage for more control
 
 app.get('/', (req, res) => {
-    res.send('Hello World\n\nPOST files to /single');
+    res.send('Hello World<br><br>POST files to /single');
 });
 
 app.post('/single', upload.single('profile'), (req, res) => {
