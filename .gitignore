@@ -103,8 +103,6 @@ dist
 # TernJS port file
 .tern-port
 
-_Resources_
-
 .DS_Store
 
 Uploads
