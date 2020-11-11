@@ -38,7 +38,10 @@ var storage = multer.diskStorage({
     }
 });
 
-const upload = multer({storage: storage}); // set upload to storage for more control
+const upload = multer({
+  storage: storage
+  // limits: {filesize: 1000} limits the filesize
+}); // set upload to storage for more control
 
 app.get('/', (req, res) => {
     res.send('Hello World<br><br>POST files to /single');
