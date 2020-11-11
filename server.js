@@ -1,8 +1,32 @@
 var express = require('express');
-// Multer Definition
-const multer = require('multer');
+const multer = require('multer'); // Multer Definition
 const app = express();
 const port = 3000;
+
+
+/*
+ *   Ensure the filesystem is created in the project directory
+ *   using the fs module. If the directory is created, ignore,
+ *   otherwise, create the storage directories
+*/
+var fs = require('fs'); // Filesystem createion using fs
+const defaultFS = './uploads';
+
+// Definition of file storage system
+const storagePath = [
+  defaultFS,
+  defaultFS + '/resources',
+  defaultFS + '/resources/media',
+  defaultFS + '/resources/text',
+  defaultFS + '/profile_pictures'
+];
+
+for (const i of storagePath) {
+  if (!fs.existsSync(i)) {
+    fs.mkdirSync(i);
+  }
+}
+
 
 // Define Storage in Filesystem and Naming Convention
 var storage = multer.diskStorage({
