@@ -2,7 +2,7 @@ var express = require('express');
 const multer = require('multer'); // Multer Definition
 const app = express();
 const port = 3000;
-
+const path = require('path')
 
 /*
  *   Ensure the filesystem is created in the project directory
@@ -34,7 +34,11 @@ var storage = multer.diskStorage({
         cb(null, './uploads');
      },
     filename: function (req, file, cb) {
-        cb(null , new Date().toISOString() + '-' + file.originalname);
+        cb(null , path.basename(
+          file.originalname,path.extname(file.originalname))
+        + '-'
+        + new Date().toISOString()
+        + path.extname(file.originalname));
     }
 });
 
